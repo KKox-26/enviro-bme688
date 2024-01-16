@@ -1,5 +1,4 @@
 import time, math, os
-from breakout_bme68x import BreakoutBME68X
 from breakout_ltr559 import BreakoutLTR559
 from machine import Pin, PWM
 from pimoroni import Analog
@@ -17,7 +16,6 @@ WIND_CM_RADIUS = 7.0
 # scaling factor for wind speed in m/s
 WIND_FACTOR = 0.0218
 
-bme688 = BreakoutBME68X(i2c)
 ltr559 = BreakoutLTR559(i2c)
 
 wind_direction_pin = Analog(26)
@@ -182,15 +180,11 @@ def rainfall(seconds_since_last):
 
 def get_sensor_readings(seconds_since_last, is_usb_power):
 
-  bme688_data = bme688.get_reading()
   ltr_data = ltr559.get_reading()
   rain, rain_per_second = rainfall(seconds_since_last)
 
   from ucollections import OrderedDict
   return OrderedDict({
-    "temperature": round(bme280_data[0], 2),
-    "humidity": round(bme280_data[2], 2),
-    "pressure": round(bme280_data[1] / 100.0, 2),
     "luminance": round(ltr_data[BreakoutLTR559.LUX], 2),
     "wind_speed": wind_speed(),
     "rain": rain,
