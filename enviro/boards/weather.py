@@ -17,7 +17,7 @@ WIND_CM_RADIUS = 7.0
 # scaling factor for wind speed in m/s
 WIND_FACTOR = 0.0218
 
-bme688 = BreakoutBME68X(81)
+bme688 = BreakoutBME68X(i2c, 81)
 ltr559 = BreakoutLTR559(i2c)
 
 wind_direction_pin = Analog(26)
