@@ -7,10 +7,10 @@ def get_readings(i2c, address):
     bme688_data = bme688.read()
 
     readings = OrderedDict({
-        "temperature_bme688": round(bme688_data[0], 2),
-        "humidity_bme688": round(bme688_data[2], 2),
-        "pressure_bme688": round(bme688_data[1] / 100.0, 2),
-        "gas_resistance_bme688": round(bme688_data[3], 2)
+        "temperature": round(bme688_data[0], 2),
+        "humidity": round(bme688_data[2], 2),
+        "pressure": round(bme688_data[1] / 100.0, 2),
+        "gas_resistance": round(bme688_data[3], 2)
     })
     
     for reading in readings:
