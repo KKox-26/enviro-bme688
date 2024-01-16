@@ -1,5 +1,5 @@
 import time, math, os
-from breakout_bme280 import BreakoutBME280
+from breakout_bme68x import BreakoutBME68X
 from breakout_ltr559 import BreakoutLTR559
 from machine import Pin, PWM
 from pimoroni import Analog
@@ -17,7 +17,7 @@ WIND_CM_RADIUS = 7.0
 # scaling factor for wind speed in m/s
 WIND_FACTOR = 0.0218
 
-bme280 = BreakoutBME280(i2c, 0x77)
+bme688 = BreakoutBME68X(81)
 ltr559 = BreakoutLTR559(i2c)
 
 wind_direction_pin = Analog(26)
