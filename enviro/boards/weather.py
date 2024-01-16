@@ -182,7 +182,7 @@ def rainfall(seconds_since_last):
 
 def get_sensor_readings(seconds_since_last, is_usb_power):
 
-  bme688_data = bme680.get_reading()
+  bme688_data = bme688.get_reading()
   ltr_data = ltr559.get_reading()
   rain, rain_per_second = rainfall(seconds_since_last)
 
