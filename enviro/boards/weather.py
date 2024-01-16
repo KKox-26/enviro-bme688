@@ -181,12 +181,8 @@ def rainfall(seconds_since_last):
   return amount, per_second
 
 def get_sensor_readings(seconds_since_last, is_usb_power):
-  # bme280 returns the register contents immediately and then starts a new reading
-  # we want the current reading so do a dummy read to discard register contents first
-  bme280.read()
-  time.sleep(0.1)
-  bme280_data = bme280.read()
 
+  bme688_data = bme680.get_reading()
   ltr_data = ltr559.get_reading()
   rain, rain_per_second = rainfall(seconds_since_last)
 
